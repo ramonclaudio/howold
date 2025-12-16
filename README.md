@@ -16,25 +16,25 @@ This matters because newer examples use modern patterns, newer runtime versions,
 
 ```bash
 # Scan all projects in a repo
-howold get-convex/templates
+bun cli.ts get-convex/templates
 
 # Show only the 5 newest projects
-howold get-convex/templates -l 5
+bun cli.ts get-convex/templates -l 5
 
 # Filter by year
-howold get-convex/templates -y 2024
+bun cli.ts get-convex/templates -y 2024
 
 # Combine limit and year filter
-howold get-convex/templates -y 2024 -l 10
+bun cli.ts get-convex/templates -y 2024 -l 10
 
 # Use a full GitHub URL
-howold https://github.com/get-convex/templates
+bun cli.ts https://github.com/get-convex/templates
 
 # Scan a specific path in a larger repo
-howold vercel/next.js examples/
+bun cli.ts vercel/next.js examples/
 
 # Full URL with branch and path
-howold https://github.com/vercel/next.js/tree/canary/examples
+bun cli.ts https://github.com/vercel/next.js/tree/canary/examples
 ```
 
 ## Options
@@ -46,15 +46,17 @@ howold https://github.com/vercel/next.js/tree/canary/examples
 -h, --help           Show help
 ```
 
+## Requirements
+
+- [Bun](https://bun.sh) runtime
+
+No other dependencies. Uses the GitHub REST API directly (no `gh` CLI needed).
+
 ## Install
 
 ```bash
-# Run directly with bun
-bun cli.ts get-convex/templates
-
-# Or build a standalone binary
-bun run build
-./howold get-convex/templates
+git clone https://github.com/ramonclaudio/howold.git
+cd howold
 ```
 
 ## Auth
@@ -93,4 +95,4 @@ cp .env.example .env
   Showing 5 of 22 projects · ▲ newest last
 ```
 
-Sorted oldest to newest. The bottom of the list is what you want.
+Results are sorted oldest to newest (newest at bottom).
