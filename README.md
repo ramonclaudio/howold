@@ -1,31 +1,31 @@
 # howold
 
-Find the newest examples, templates, and starters in GitHub repos.
+Find the latest examples, templates, and starters in GitHub repos.
 
 ## The Problem
 
-Large repos (Next.js, Vercel templates, etc.) have hundreds of example projects. GitHub shows "last updated" but that's usually just dependabot or package bumps. You can't tell which examples are genuinely new vs. old code that's been maintained for years.
+Large repos like Next.js or Vercel templates have hundreds of example projects. GitHub's "last updated" date is misleading—it usually reflects dependabot bumps or minor maintenance, not when the project was actually created.
 
-This matters because newer examples use modern patterns, newer runtime versions, and current best practices. Old examples work, but you'll spend time migrating outdated code. When learning from framework maintainers, you want their *latest* thinking, not 2019 patterns with 2024 dependency updates.
+You can't tell which examples are genuinely new vs. old code that's been maintained for years. This matters because newer examples use modern patterns, current runtime versions, and up-to-date best practices. Old examples work, but you'll spend time migrating outdated code.
 
 ## The Solution
 
-`howold` finds the first commit that touched each project. That's the real creation date. Sort by that and you instantly see which examples are fresh.
+`howold` finds the first commit that touched each project—the real creation date. Sort by that and you instantly see which examples are fresh.
 
 ## Usage
 
 ```bash
-# Scan all projects in a repo
+# Scan a repo for templates
 bun cli.ts get-convex/templates
 
-# Show only the 5 newest projects
+# Show only the 5 latest templates
 bun cli.ts get-convex/templates -l 5
 
 # Filter by year
-bun cli.ts get-convex/templates -y 2024
+bun cli.ts get-convex/templates -y 2025
 
 # Combine limit and year filter
-bun cli.ts get-convex/templates -y 2024 -l 10
+bun cli.ts get-convex/templates -y 2025 -l 10
 
 # Use a full GitHub URL
 bun cli.ts https://github.com/get-convex/templates
@@ -40,8 +40,8 @@ bun cli.ts https://github.com/vercel/next.js/tree/canary/examples
 ## Options
 
 ```
--y, --year <range>   Filter by year (2024 or 2020-2024)
--l, --limit <n>      Show n newest projects
+-y, --year <range>   Filter by year (2025 or 2020-2025)
+-l, --limit <n>      Show n latest results
 -v, --version        Show version
 -h, --help           Show help
 ```
@@ -80,7 +80,7 @@ cp .env.example .env
 │ Created  2023-10-28 (2 years ago) │
 ╰───────────────────────────────────╯
 
-  ◇ Found 22 projects
+  ◇ Found 22 templates
 
 ╭────────────┬──────────┬─────────┬─────────────────────────────────╮
 │ date       │ time     │ sha     │ project                         │
@@ -92,7 +92,5 @@ cp .env.example .env
 │ 2025-10-18 │ 00:08:51 │ 0a61d3c │ template-tanstack-start-authkit │
 ╰────────────┴──────────┴─────────┴─────────────────────────────────╯
 
-  Showing 5 of 22 projects · ▲ newest last
+  Showing 5 of 22 templates · ▲ latest last
 ```
-
-Results are sorted oldest to newest (newest at bottom).
