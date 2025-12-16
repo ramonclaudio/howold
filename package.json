@@ -1,0 +1,40 @@
+{
+  "name": "howold",
+  "version": "1.0.0",
+  "description": "Find the latest examples, templates, and starters in GitHub repos",
+  "type": "module",
+  "bin": "./cli.ts",
+  "scripts": {
+    "build": "bun build --compile --minify --sourcemap --bytecode ./cli.ts --outfile howold",
+    "build:all": "bun run build:linux && bun run build:macos && bun run build:windows",
+    "build:linux": "bun build --compile --minify --sourcemap --bytecode --target=bun-linux-x64-modern ./cli.ts --outfile dist/howold-linux",
+    "build:macos": "bun build --compile --minify --sourcemap --bytecode --target=bun-darwin-arm64 ./cli.ts --outfile dist/howold-macos",
+    "build:windows": "bun build --compile --minify --sourcemap --bytecode --target=bun-windows-x64-modern ./cli.ts --outfile dist/howold-windows.exe"
+  },
+  "keywords": [
+    "github",
+    "examples",
+    "templates",
+    "starters",
+    "cli",
+    "age",
+    "date",
+    "commits"
+  ],
+  "author": "Ray <hi@rmncldyo.com> (https://github.com/ramonclaudio)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramonclaudio/howold.git"
+  },
+  "homepage": "https://github.com/ramonclaudio/howold#readme",
+  "bugs": {
+    "url": "https://github.com/ramonclaudio/howold/issues"
+  },
+  "files": [
+    "cli.ts"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
