@@ -4,13 +4,13 @@ Find the latest examples, templates, and starters in GitHub repos.
 
 ## The Problem
 
-Large repos like Next.js or Vercel templates have hundreds of example projects. GitHub's "last updated" date is misleading—it usually reflects dependabot bumps or minor maintenance, not when the project was actually created.
+Large repos like Next.js or Vercel templates have hundreds of examples. GitHub shows "last updated" but that's usually just dependabot or package bumps. You can't tell which examples are genuinely new vs old code that's been maintained for years.
 
-You can't tell which examples are genuinely new vs. old code that's been maintained for years. This matters because newer examples use modern patterns, current runtime versions, and up-to-date best practices. Old examples work, but you'll spend time migrating outdated code.
+This matters because newer examples use modern patterns, current runtime versions, and best practices. Old examples work but you'll spend time migrating outdated code. When learning from framework maintainers you want their latest thinking, not 2019 patterns with 2025 dependency updates.
 
 ## The Solution
 
-`howold` finds the first commit that touched each project—the real creation date. Sort by that and you instantly see which examples are fresh.
+`howold` finds the first commit that touched each example. That's the real creation date. Sort by that and you instantly see which examples are fresh.
 
 ## Usage
 
