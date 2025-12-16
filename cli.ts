@@ -214,14 +214,14 @@ async function main() {
   if (values.help || !positionals.length) {
     log(`
   ${s.cyan}◆${s.reset} ${s.bold}howold${s.reset} ${s.dim}v${VERSION}${s.reset}
-  ${s.dim}Find the newest examples, templates, and starters in GitHub repos${s.reset}
+  ${s.dim}Find the latest examples, templates, and starters in GitHub repos${s.reset}
 
   ${s.bold}Usage${s.reset}
     ${s.dim}$${s.reset} howold ${s.cyan}<repo>${s.reset} ${s.dim}[path] [options]${s.reset}
 
   ${s.bold}Options${s.reset}
-    ${s.cyan}-y${s.reset}, ${s.cyan}--year${s.reset} ${s.dim}<range>${s.reset}   Filter by year ${s.dim}(2024 or 2020-2024)${s.reset}
-    ${s.cyan}-l${s.reset}, ${s.cyan}--limit${s.reset} ${s.dim}<n>${s.reset}      Show n newest projects
+    ${s.cyan}-y${s.reset}, ${s.cyan}--year${s.reset} ${s.dim}<range>${s.reset}   Filter by year ${s.dim}(2025 or 2020-2025)${s.reset}
+    ${s.cyan}-l${s.reset}, ${s.cyan}--limit${s.reset} ${s.dim}<n>${s.reset}      Show n latest results
     ${s.cyan}-v${s.reset}, ${s.cyan}--version${s.reset}        Show version
     ${s.cyan}-h${s.reset}, ${s.cyan}--help${s.reset}           Show help
 
@@ -260,7 +260,7 @@ async function main() {
   log(`\n${repoBox}`);
 
   const dirs = await findProjects(owner, repo, branch, path);
-  log(`\n  ${s.cyan}◇${s.reset} ${s.dim}Found${s.reset} ${s.bold}${dirs.length}${s.reset} ${s.dim}projects${s.reset}\n`);
+  log(`\n  ${s.cyan}◇${s.reset} ${s.dim}Found${s.reset} ${s.bold}${dirs.length}${s.reset} ${s.dim}templates${s.reset}\n`);
 
   const projects: Project[] = [];
   const BATCH = 50;
@@ -287,7 +287,7 @@ async function main() {
   const final = limit ? projects.slice(-limit) : projects;
 
   if (final.length === 0) {
-    log(`  ${s.yellow}⚠${s.reset} ${s.dim}No projects found${s.reset}\n`);
+    log(`  ${s.yellow}⚠${s.reset} ${s.dim}No templates found${s.reset}\n`);
   } else {
     const tableData = final.map((p) => ({
       date: formatDate(p.date),
@@ -296,7 +296,7 @@ async function main() {
       project: p.path,
     }));
     log(table(tableData));
-    log(`\n  ${s.dim}Showing${s.reset} ${s.bold}${final.length}${s.reset}${projects.length > final.length ? `${s.dim} of ${s.reset}${s.bold}${projects.length}${s.reset}` : ""} ${s.dim}projects${s.reset} ${s.dim}·${s.reset} ${s.green}▲${s.reset} ${s.dim}newest last${s.reset}`);
+    log(`\n  ${s.dim}Showing${s.reset} ${s.bold}${final.length}${s.reset}${projects.length > final.length ? `${s.dim} of ${s.reset}${s.bold}${projects.length}${s.reset}` : ""} ${s.dim}templates${s.reset} ${s.dim}·${s.reset} ${s.green}▲${s.reset} ${s.dim}latest last${s.reset}`);
   }
 
   if (!token) {
